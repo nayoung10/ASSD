@@ -1,0 +1,18 @@
+_target_: equiaac
+
+# data_dir: ${data_dir} # data_dir is specified in config.yaml
+data_dir: '${paths.data_dir}/cdrh3'
+# data_dir: '/root/neurips19-graph-protein-design/data/cath'
+max_length: 500 # 393
+atoms: ['N', 'CA', 'C', 'O']
+
+# alphabet related
+alphabet:
+  name: esm
+  featurizer: antibody
+
+# dataloader related
+max_tokens: 6000
+sort: true
+num_workers: 8
+pin_memory: true
