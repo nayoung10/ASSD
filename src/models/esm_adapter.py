@@ -1,46 +1,39 @@
+from omegaconf import OmegaConf
+
 from dataclasses import dataclass, field
 from typing import List
 
 import torch
-from byprot.models import register_model
-from byprot.models.fixedbb import FixedBackboneDesignEncoderDecoder
-from byprot.models.fixedbb.generator import sample_from_categorical
-from byprot.models.fixedbb.protein_mpnn_cmlm.protein_mpnn import (
-    ProteinMPNNCMLM, ProteinMPNNConfig)
+from src.models import register_model
+from src.models.generator import sample_from_categorical
 
-from .fixedbb.lm_design.modules.esm_adapter import ProteinBertModelWithStructuralAdatper
 import esm
 import loralib as lora
+
 @dataclass
 class ESMAdapterConfig:
-    encoder: ProteinMPNNConfig = field(default=ProteinMPNNConfig())
-    adapter_layer_indices: List = field(default_factory=lambda: [32, ])
-    separate_loss: bool = True
-    name: str = 'esm1b_t33_650M_UR50S'
-    # ensemble_logits: bool = False
+    name: str = 'esm2_t33_650M_UR50D'
     initialize_input: bool = True
 
-
 @register_model('esm_adapter')
-class ESMAdapter(FixedBackboneDesignEncoderDecoder):
+class ESMAdapter(torch.nn.Module):
     _default_cfg = ESMAdapterConfig()
 
     def __init__(self, cfg) -> None:
-        super().__init__(cfg)
+        super().__init__()
+        self._update_cfg(cfg)
 
         self.decoder, _ = esm.pretrained.load_model_and_alphabet_hub(self.cfg.name)
         print("INFO:: Loaded ESM model version: ", self.cfg.name)
-        ###### LoRA fine-tuning ######
-        # lora.mark_only_lora_as_trainable(self.decoder)
 
-        # ###### Full finetune ######
-        print("INFO:: Finetuning the whole model")
-        for name, param in self.decoder.named_parameters(): 
-            if not param.requires_grad:
-                param.requires_grad = True
-        for name, param in self.decoder.named_parameters(): 
-            if not param.requires_grad:
-                raise ValueError("ERROR:: param.requires_grad is False: ", name)
+        if '650M' in self.cfg.name:
+            print("INFO:: Marking only LORA as trainable")
+            lora.mark_only_lora_as_trainable(self.decoder)
+        else: 
+            print("INFO:: Marking all parameters as trainable")
+            for name, param in self.decoder.named_parameters(): 
+                if not param.requires_grad:
+                    param.requires_grad = True
         
         ###### Training from scratch ######
         # self.decoder._init_submodules() # initialize the submodules
@@ -55,6 +48,9 @@ class ESMAdapter(FixedBackboneDesignEncoderDecoder):
         self.mask_idx = self.decoder.mask_idx
         self.cls_idx = self.decoder.cls_idx
         self.eos_idx = self.decoder.eos_idx
+
+    def _update_cfg(self, cfg):
+        self.cfg = OmegaConf.merge(self._default_cfg, cfg)
 
     def forward(self, batch, **kwargs):
         init_pred = batch['prev_tokens']

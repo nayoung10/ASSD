@@ -1,6 +1,6 @@
 import os
 from typing import List
-from byprot.tasks import on_prediction_mode
+from src.tasks import on_prediction_mode
 
 from torch import nn
 import hydra
@@ -8,7 +8,7 @@ from omegaconf import DictConfig
 from pytorch_lightning import LightningDataModule, LightningModule, Trainer, seed_everything
 from pytorch_lightning.loggers import LightningLoggerBase
 
-from byprot import utils
+from src import utils
 
 log = utils.get_logger(__name__)
 

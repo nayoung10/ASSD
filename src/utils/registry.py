@@ -1,6 +1,6 @@
-from byprot.datamodules import DATAMODULE_REGISTRY
-from byprot.models import MODEL_REGISTRY
-from byprot.tasks import TASK_REGISTRY
+from src.datamodules import DATAMODULE_REGISTRY
+from src.models import MODEL_REGISTRY
+from src.tasks import TASK_REGISTRY
 
 registry_dict = dict(
     datamodule=DATAMODULE_REGISTRY,

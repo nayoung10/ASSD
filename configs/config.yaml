@@ -3,7 +3,7 @@
 # specify here default training configuration
 defaults:
   - _self_
-  - experiment: esm2_650m # specifies pipeline and model
+  - experiment: esm2 # specifies pipeline and model
 
   - callbacks: # pytorch-lightning callbacks
     - default

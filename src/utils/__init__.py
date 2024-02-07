@@ -267,7 +267,7 @@ def common_pipeline(config, training=False):
                 log.info(f"Instantiating callback <{cb_conf._target_}>")
                 callbacks.append(hydra.utils.instantiate(cb_conf))
         if config.trainer.get('enable_progress_bar', False):
-            from byprot.utils.callbacks import BetterRichProgressBar
+            from src.utils.callbacks import BetterRichProgressBar
             callbacks.append(BetterRichProgressBar(leave=False))
 
     return datamodule, pl_module, logger, callbacks

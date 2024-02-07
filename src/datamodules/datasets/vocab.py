@@ -8,7 +8,7 @@ from torchtext.vocab import Vocab as V
 from torchtext.vocab import build_vocab_from_iterator
 from torchtext.vocab import vocab as build_vocab
 
-from byprot import utils
+from src import utils
 
 log = utils.get_logger(__name__)
 

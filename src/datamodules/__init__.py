@@ -3,7 +3,7 @@ from omegaconf import DictConfig
 import os
 import glob
 
-from byprot.utils import import_modules
+from src.utils import import_modules
 
 DATAMODULE_REGISTRY = {}
 
@@ -15,4 +15,4 @@ def register_datamodule(name):
     return decorator
 
 
-import_modules(os.path.dirname(__file__), "byprot.datamodules")
+import_modules(os.path.dirname(__file__), "src.datamodules")

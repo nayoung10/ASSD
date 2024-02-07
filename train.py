@@ -44,8 +44,8 @@ def main(config: DictConfig):
 
     # Imports can be nested inside @hydra.main to optimize tab completion
     # https://github.com/facebookresearch/hydra/issues/934
-    from byprot import utils
-    from byprot.training_pipeline import train
+    from src import utils
+    from src.training_pipeline import train
 
     # Applies optional utilities
     config = utils.extras(config)

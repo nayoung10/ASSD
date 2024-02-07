@@ -4,12 +4,11 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 import torch
-from byprot import utils
-from byprot.datamodules import register_datamodule
+from src import utils
+from src.datamodules import register_datamodule
 from pytorch_lightning import LightningDataModule
 from torch.utils.data import DataLoader, Dataset
 
-from .datasets.cath import CATH
 from .datasets.data_utils import Alphabet, MaxTokensBatchSampler
 from .datasets.antibody_antigen import EquiAACAntigenDataset
 

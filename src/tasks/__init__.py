@@ -7,9 +7,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 import numpy as np
 import torch
-from byprot import utils
-from byprot.utils.lr_scheduler import get_scheduler
-from byprot.utils.optim import get_optimizer
+from src import utils
+from src.utils.lr_scheduler import get_scheduler
+from src.utils.optim import get_optimizer
 from omegaconf import DictConfig
 from pytorch_lightning import LightningModule
 from pytorch_lightning.utilities.types import _METRIC_COLLECTION
@@ -243,4 +243,4 @@ def register_task(name):
 
 
 # automatically import any Python files in the models/ directory
-utils.import_modules(os.path.dirname(__file__), "byprot.tasks")
+utils.import_modules(os.path.dirname(__file__), "src.tasks")

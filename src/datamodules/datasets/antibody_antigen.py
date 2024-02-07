@@ -7,13 +7,13 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 import torch
-from byprot import utils
+from src import utils
 from torch.nn import functional as F
 from torch.utils.data.datapipes.map import SequenceWrapper
 from torch.utils.data.dataset import Subset
 
 from .data_utils import Alphabet
-from byprot.datamodules.datasets.pdb_utils import AAComplex, Protein, VOCAB
+from src.datamodules.datasets.pdb_utils import AAComplex, Protein, VOCAB
 
 import esm
 
@@ -409,7 +409,7 @@ class ToSabdabDataFormat(object):
     def __init__(self, alphabet) -> None:
         self.alphabet_ori = alphabet
 
-        from byprot.utils.protein import constants
+        from src.utils.protein import constants
         UNK = constants.ressymb_to_resindex['X']
         self.aa_map = {}
         for ind, tok in enumerate(alphabet.all_toks):

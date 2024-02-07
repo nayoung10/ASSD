@@ -3,7 +3,7 @@ from omegaconf import DictConfig
 import os
 import glob
 
-from byprot.utils import import_modules
+from src.utils import import_modules
 
 MODEL_REGISTRY = {}
 
@@ -17,4 +17,4 @@ def register_model(name):
 
 
 # automatically import any Python files in the models/ directory
-import_modules(os.path.dirname(__file__), "byprot.models", excludes=['protein_structure_prediction'])
+import_modules(os.path.dirname(__file__), "src.models", excludes=['protein_structure_prediction'])

@@ -17,7 +17,7 @@ from Bio.PDB.Residue import Residue as BResidue
 from Bio.PDB.Atom import Atom as BAtom
 from tqdm import tqdm
 
-from byprot.utils import print_log
+from src.utils import print_log
 
 
 def rotation_matrix_from_vectors(vec1, vec2):

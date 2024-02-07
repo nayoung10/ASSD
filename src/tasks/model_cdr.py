@@ -3,18 +3,18 @@ from typing import Any, Callable, List, Union
 from pathlib import Path
 import numpy as np
 import torch
-from byprot import utils
-from byprot.models.fixedbb.generator import IterativeRefinementGenerator, sample_from_categorical
-from byprot.modules import metrics
-from byprot.tasks import TaskLitModule, register_task
-from byprot.utils.config import compose_config as Cfg, merge_config
+from src import utils
+from src.models.generator import IterativeRefinementGenerator, sample_from_categorical
+from src.modules import metrics
+from src.tasks import TaskLitModule, register_task
+from src.utils.config import compose_config as Cfg, merge_config
 
 from omegaconf import DictConfig
 from torch import nn
 from torch.nn import functional as F
 from torchmetrics import CatMetric, MaxMetric, MeanMetric, MinMetric
 
-from byprot.datamodules.datasets.data_utils import Alphabet
+from src.datamodules.datasets.data_utils import Alphabet
 
 # import esm
 
@@ -31,7 +31,7 @@ def new_arange(x, *size):
     return torch.arange(size[-1], device=x.device).expand(*size).contiguous()
 
 
-@register_task('fixedbb/cmlm_cdr')
+@register_task('model_cdr')
 class CMLM(TaskLitModule):
 
     _DEFAULT_CFG: DictConfig = Cfg(

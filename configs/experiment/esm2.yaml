@@ -5,14 +5,14 @@
 
 defaults:
   - /datamodule: cdr
-  - /callbacks: fixedbb
+  - /callbacks: model_cdr
   - /trainer: default
 
 # all parameters below will be merged with parameters from default configurations set above
 # this allows you to overwrite only specified parameters
 
 # name of the run determines folder name in logs
-name: "fixedbb/cdrh3/cdr_design_esm2_650m"
+name: "rabd/esm2_650m"
 
 datamodule:
   alphabet:
@@ -20,18 +20,12 @@ datamodule:
     featurizer: antibody
 
 model:
-  _target_: esm2_adapter
-  encoder:
-    d_model: 128
-    n_enc_layers: 3
-    n_dec_layers: 3
-    use_esm_alphabet: true
+  _target_: esm_adapter
   name: esm2_t33_650M_UR50D
-  adapter_layer_indices: [32, ]
-  separate_loss: true
+  initialize_input: false
 
 task:
-  _target_: fixedbb/cmlm_cdr
+  _target_: model_cdr
   alphabet: ${datamodule.alphabet}
   learning:
     noise: full_mask_cdr # enable cmlm training with uniform random masking
@@ -39,7 +33,7 @@ task:
     RL: false # enable reinforcement learning
     alpha: 0 # weight of RL loss
   criterion:
-    _target_: byprot.modules.cross_entropy.Coord2SeqCrossEntropyLoss
+    _target_: src.modules.cross_entropy.Coord2SeqCrossEntropyLoss
     label_smoothing: 0.0
     ignore_index: 1
   optimizer:
