@@ -1,0 +1,23 @@
+name: AGN
+channels:
+  - conda-forge
+  - pyg
+  - pytorch
+dependencies:
+  - python=3.8
+  - pytorch==1.12.0
+  - torchvision==0.13.0
+  - torchaudio==0.12.0
+  - cudatoolkit=11.3
+  - ca-certificates
+  - openssl
+  - pyg
+  - pytorch-scatter
+  - pytorch-sparse
+  - pytorch-cluster
+  - pytorch-spline-conv
+  - certifi
+  - torchdata
+  - torchtext
+  - biotite
+  - loralib

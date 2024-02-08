@@ -12,9 +12,8 @@ echo "Locate project at ${ROOT_DIR}"
 # model_names=("esm2_t6_8M_UR50D" "esm2_t12_35M_UR50D" "esm2_t30_150M_UR50D" "esm2_t33_650M_UR50D")
 model_name=("esm2_t33_650M_UR50D")
 
-
 exp=esm2
-name=rabd/${model_name}
+name=ita/${model_name}
 dataset=cdr
 
 # Run the experiment with the desired data_dir and cdr_type values directly in the command
@@ -23,7 +22,7 @@ python ${ROOT_DIR}/train.py \
     datamodule=${dataset} \
     name=${name} \
     trainer=ddp_fp16 \
-    datamodule.data_dir='${paths.data_dir}/cdrh3' \
+    datamodule.data_dir='${paths.data_dir}/' \
     task.learning.cdr_type=3 \
     model.name=${model_name} \
     trainer.max_epochs=30 \

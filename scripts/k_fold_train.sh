@@ -28,11 +28,9 @@ for cdr in "${cdr_types[@]}"; do
             experiment=${exp} \
             datamodule=${dataset} \
             name=${name} \
-            logger=wandb \
             trainer=ddp_fp16 \
             datamodule.data_dir='${paths.data_dir}/cdrh'"${cdr}"'/fold_'"${fold}" \
             task.learning.cdr_type=${cdr} \
-            logger.wandb.project=TEST \
             model.name=${model_name} \
             trainer.max_epochs=30 \
 
