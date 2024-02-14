@@ -157,3 +157,11 @@ run/logs
 
 # pdb
 *.pdb
+
+# MEAN related
+MEAN/summaries
+MEAN/all_structures
+!summaries/rabd_summary.jsonl
+!summaries/sabdab_summary.tsv
+!summaries/sabdab_summary_all.tsv
+!summaries/skempi_v2_summary.jsonl
