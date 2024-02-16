@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - pyg
   - pytorch
+  - bioconda
 dependencies:
   - python=3.8
   - pytorch==1.12.0
@@ -21,3 +22,5 @@ dependencies:
   - torchtext
   - biotite
   - loralib
+  - mmseqs2
+  - bioconda::hmmer

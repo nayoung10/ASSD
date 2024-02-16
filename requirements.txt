@@ -45,8 +45,7 @@ sympy
 e3nn
 fairscale
 tmtools
-# mmseqs2
-# tqdm
-# easydict
-# requests
-# setuptools==59.5.0
+tqdm
+easydict
+requests
+setuptools==59.5.0

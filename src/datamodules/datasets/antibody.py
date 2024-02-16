@@ -525,6 +525,8 @@ class Featurizer(object):
 def parse_args():
     parser = ArgumentParser()
     parser.add_argument('--data_dir', type=str, required=True, help='Directory containing the data files.')
+    parser.add_argument('--datasets', nargs='+', default=['train', 'valid', 'test'],
+                        help='Datasets to process (default: train valid test)')
     return parser.parse_args()
 
 def process_dataset(dataset_name):
@@ -537,4 +539,4 @@ if __name__ == '__main__':
 
      # Utilize all available CPU cores for parallel processing
     with Pool() as p:
-        p.map(process_dataset, ["train", "valid", "test"])
+        p.map(process_dataset, args.datasets)

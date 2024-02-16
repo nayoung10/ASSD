@@ -159,9 +159,12 @@ run/logs
 *.pdb
 
 # MEAN related
-MEAN/summaries
+MEAN/summaries/*
+!MEAN/summaries/rabd_summary.jsonl
+!MEAN/summaries/sabdab_summary.tsv
+!MEAN/summaries/sabdab_summary_all.tsv
+!MEAN/summaries/skempi_v2_summary.jsonl
 MEAN/all_structures
-!summaries/rabd_summary.jsonl
-!summaries/sabdab_summary.tsv
-!summaries/sabdab_summary_all.tsv
-!summaries/skempi_v2_summary.jsonl
+MEAN/checkpoints
+MEAN/TMscore
+MEAN/TMscore.exe

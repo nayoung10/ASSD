@@ -387,7 +387,6 @@ class EfficientMCAttModel(MCAttModel):
         closs = self.coord_loss(Z[mask], true_X[mask]) / aa_cnt
 
         loss = snll + self.alpha * closs
-        # loss = closs # only use coordinate loss
         return loss, r_snll, closs  # only return the last snll
 
     def generate(self, X, S, S0, L, offsets, greedy=True):

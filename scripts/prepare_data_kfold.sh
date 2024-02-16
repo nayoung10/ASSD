@@ -16,6 +16,6 @@ for cdr in "${cdr_types[@]}"; do
         DATA_DIR="${ROOT_DIR}/data/cdrh$cdr/fold_$fold/"
 
         # Process data
-        python ${ROOT_DIR}/src/byprot/datamodules/datasets/antibody.py --data_dir=${DATA_DIR}
+        python ${ROOT_DIR}/src/datamodules/datasets/antibody.py --data_dir=${DATA_DIR}
     done
 done
