@@ -449,11 +449,6 @@ class EfficientMCAttModel(MCAttModel):
         snll_all, pred_S, pred_X, true_X, cdr_range = self.generate(
             X, S, S0, L, offsets, greedy=greedy
         )
-        print('S0', S0)
-        print('pred_S', pred_S)
-        print('S0.shape', S0.shape)
-        print('pred_S.shape', pred_S.shape)
-        assert False
         pred_S, cdr_range = pred_S.tolist(), cdr_range.tolist()
         pred_X, true_X = pred_X.cpu().numpy(), true_X.cpu().numpy()
         # seqs, x, true_x

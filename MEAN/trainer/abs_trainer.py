@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-import wandb
 import math
 import os
 import re
@@ -141,10 +140,6 @@ class Trainer:
                     best_save_path = os.path.join(self.model_dir, 'best.ckpt')
                     torch.save(module_to_save, best_save_path)
                     print_log(f'best value : {valid_metric}')
-                    wandb.log({
-                        "epoch": self.epoch,
-                        "best_value": valid_metric,
-                    })
                     print_log(f'best model saved to {best_save_path}')
 
                 # save last checkpoint

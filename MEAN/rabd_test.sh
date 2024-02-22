@@ -26,16 +26,12 @@ CKPT=${CKPT_DIR}/checkpoint/best.ckpt
 
 echo "Using checkpoint: ${CKPT}"
 
-# model_names=("esm2_t6_8M_UR50D" "esm2_t12_35M_UR50D" "esm2_t30_150M_UR50D")
-# train_types=("train_from_scratch" "full_finetune")
-
-model_name="esm2_t30_150M_UR50D"
-train_type="full_finetune"
+model_name="esm2_t33_650M_UR50D"
 
 python generate.py \
     --ckpt ${CKPT} \
     --test_set ${DATA_DIR}/test.json \
-    --test_fasta ${DATA_DIR}/test_pred_${model_name}_${train_type}.fasta \
+    --test_fasta ${DATA_DIR}/test_pred_${model_name}.fasta \
     --out ${CKPT_DIR}/results \
     --gpu 0 \
     --rabd_test \
