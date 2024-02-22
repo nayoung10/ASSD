@@ -23,7 +23,11 @@ cd AGN
 
 # setup environment
 bash scripts/install.sh
+
+# start conda environment
+conda activate AGN
 ```
+> Always activate conda environment before run any code.
 
 ## Data Preparation
 
