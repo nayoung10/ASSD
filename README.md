@@ -101,5 +101,9 @@ We deeply appreciate the following works/repositories, on which our project heav
 - [Structure-informed Language Models Are Protein Designers](https://github.com/BytedProtein/ByProt/tree/main)
 - [MEAN: Conditional Antibody Design as 3D Equivariant Graph Translation](https://github.com/THUNLP-MT/MEAN/)
 - [Evolutionary Scale Modeling](https://github.com/facebookresearch/esm/tree/main)
+- [Deep Learning-Guided Optimization of Human Antibody Against SARS-CoV-2 Variants with Broad Neutralization](https://github.com/HeliXonProtein/binding-ddg-predictor)
+- [Scoring function for automated assessment of protein structure template quality](https://zhanggroup.org/TM-score/)
+- [E(n) Equivariant Graph Neural Networks](https://github.com/vgsatorras/egnn)
+- [ANARCI: antigen receptor numbering and receptor classification](https://github.com/oxpig/ANARCI)
 
 ## Citation
