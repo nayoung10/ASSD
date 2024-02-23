@@ -6,9 +6,9 @@ channels:
   - bioconda
 dependencies:
   - python=3.8
-  - pytorch==1.12.0
-  - torchvision==0.13.0
-  - torchaudio==0.12.0
+  - pytorch::pytorch==1.12.0
+  - pytorch::torchvision==0.13.0
+  - pytorch::torchaudio==0.12.0
   - cudatoolkit=11.3
   - ca-certificates
   - openssl

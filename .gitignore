@@ -159,6 +159,9 @@ run/logs
 *.pdb
 
 # MEAN related
+__ddgcache__
+__pycache__
+__tmcache__
 MEAN/summaries/*
 !MEAN/summaries/rabd_summary.jsonl
 !MEAN/summaries/sabdab_summary.tsv
@@ -166,5 +169,5 @@ MEAN/summaries/*
 !MEAN/summaries/skempi_v2_summary.jsonl
 MEAN/all_structures
 MEAN/checkpoints
-MEAN/TMscore
-MEAN/TMscore.exe
+MEAN/evaluation/TMscore
+MEAN/evaluation/TMscore.exe
