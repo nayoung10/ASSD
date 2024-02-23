@@ -332,8 +332,9 @@ class ITAWrapper(torch.utils.data.Dataset):
 
 def parse():
     parser = argparse.ArgumentParser(description='Process data')
-    parser.add_argument('--data_dir', type=str, required=True, help='Directory containing the data files.')
     parser.add_argument('--save_dir', type=str, default=None, help='Path to save processed data')
+    requiredArg = parser.add_argument_group('required named arguments')
+    requiredArg.add_argument('--data_dir', type=str, required=True, help='Directory containing the data files.')
     return parser.parse_args()
  
 def process_dataset(dataset_name):
