@@ -18,5 +18,5 @@ pip install -r requirements.txt
 pip install -e .
 
 # TMscore
-EVAL_FOLDER=${PROJ_FOLDER}/MEAN/evaluation
+EVAL_FOLDER=MEAN/evaluation
 g++ -static -O3 -ffast-math -lm -o ${EVAL_FOLDER}/TMscore ${EVAL_FOLDER}/TMscore.cpp

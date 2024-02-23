@@ -22,7 +22,8 @@ git clone https://github.com/lkny123/AGN.git
 cd AGN
 
 # setup environment
-bash scripts/install.sh
+# TIP: Temporarily comment out the lines 15-22 in install.sh in case the conda installation fails. 
+source scripts/install.sh
 ```
 
 ## Data Preparation
@@ -76,9 +77,9 @@ bash scripts/k_fold_eval.sh # evaluate AAR
 
 # Step 2: Structure prediction 
 bash scripts/generate_seqs_kfold.sh # generate sequence -- i.e., the input of the structure prediction model 
-bash MEAN/scripts/prepare_data_kfold.sh summaries/sabdab_summary.tsv all_structures/imgt
-GPU=0 bash MEAN/scripts/k_fold_train.sh summaries 111 mean 9901
-GPU=0 bash MEAN/scripts/k_fold_eval.sh summaries 111 mean 0
+cd MEAN # in AGN/MEAN directory 
+GPU=0 bash scripts/k_fold_train.sh summaries 111 mean 9901
+GPU=0 bash scripts/k_fold_eval.sh summaries 111 mean 0
 ```
 
 ### Task 2: Antibody-binding CDR-H3 Design
@@ -89,10 +90,10 @@ bash scripts/task2_train.sh # training sequence design model
 bash scripts/task2_eval.sh # evaluate AAR and CoSim
 
 # Step 2: Structure prediction (MEAN)
-bash MEAN/scripts/generate_seqs.sh # generate sequence -- i.e., the input of the structure prediction model
-bash MEAN/scripts/prepare_data_rabd.sh summaries/rabd_summary.jsonl all_structures/imgt summaries/sabdab_all.json
-GPU=0 MODE=111 DATA_DIR=summaries/cdrh3 bash MEAN/train.sh mean 3
-GPU=0 MODE=111 DATA_DIR=summaries/cdrh3 bash MEAN/rabd_test.sh 0
+bash scripts/generate_seqs_rabd.sh # generate sequence -- i.e., the input of the structure prediction model
+cd MEAN # in AGN/MEAN directory 
+GPU=0 MODE=111 DATA_DIR=summaries/cdrh3 bash train.sh mean 3
+GPU=0 MODE=111 DATA_DIR=summaries/cdrh3 bash rabd_test.sh 0
 ```
 
 ## Acknowledgements
