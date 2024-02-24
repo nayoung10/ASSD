@@ -333,6 +333,8 @@ class ITAWrapper(torch.utils.data.Dataset):
 def parse():
     parser = argparse.ArgumentParser(description='Process data')
     parser.add_argument('--data_dir', type=str, required=True, help='Directory containing the data files.')
+    parser.add_argument('--datasets', nargs='+', default=['train', 'valid', 'test'],
+                        help='Datasets to process (default: train valid test)')
     parser.add_argument('--save_dir', type=str, default=None, help='Path to save processed data')
     return parser.parse_args()
  
@@ -347,4 +349,4 @@ if __name__ == '__main__':
     args = parse()
     # Utilize all available CPU cores for parallel processing
     with Pool() as p:
-        p.map(process_dataset, ["train", "valid", "test"])
+        p.map(process_dataset, args.datasets)

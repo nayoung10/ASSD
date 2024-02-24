@@ -48,4 +48,4 @@ python data/split.py \
     --cdr ${CDR} \
     --filter 111
 # process
-python data/dataset.py --data_dir ${DATA_DIR}
+python data/dataset.py --data_dir ${DATA_DIR} --datasets train valid
