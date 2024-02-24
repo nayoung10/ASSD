@@ -50,7 +50,5 @@ do
         --cdr ${CDR} \
         --filter 111
     # process
-    python data/dataset.py --dataset ${PROCESS_DIR}/test.json
-    python data/dataset.py --dataset ${PROCESS_DIR}/valid.json
-    python data/dataset.py --dataset ${PROCESS_DIR}/train.json
+    python data/dataset.py --data_dir ${PROCESS_DIR}
 done

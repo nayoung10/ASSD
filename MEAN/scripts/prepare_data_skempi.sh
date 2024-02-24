@@ -48,6 +48,4 @@ python data/split.py \
     --cdr ${CDR} \
     --filter 111
 # process
-python data/dataset.py --dataset ${DATA_DIR}/skempi_all.json
-python data/dataset.py --dataset ${DATA_DIR}/valid.json
-python data/dataset.py --dataset ${DATA_DIR}/train.json
+python data/dataset.py --data_dir ${DATA_DIR}

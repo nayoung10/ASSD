@@ -48,8 +48,6 @@ do
     # process
     for ((k=0;k<${K};k++));
     do
-        python data/dataset.py --dataset ${PROCESS_DIR}/fold_${k}/test.json
-        python data/dataset.py --dataset ${PROCESS_DIR}/fold_${k}/valid.json
-        python data/dataset.py --dataset ${PROCESS_DIR}/fold_${k}/train.json
+        python data/dataset.py --data_dir ${PROCESS_DIR}/fold_${k}
     done
 done
