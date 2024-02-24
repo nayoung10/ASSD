@@ -7,16 +7,22 @@ echo "Locate project at ${PROJ_FOLDER}"
 # Create the conda environment
 conda env create -f environment.yml
 
-# Activate the conda environment
 ENV_NAME=$(grep "name:" environment.yml | cut -d " " -f 2)
-echo "Activating environment ${ENV_NAME}"
-conda activate ${ENV_NAME}  
 
-# Install pip packages
-pip install -e vendor/esm
-pip install -r requirements.txt
-pip install -e .
+if conda env list | grep -q "^${ENV_NAME}"; then
+    echo "Environment ${ENV_NAME} exists. Proceeding with package installations."
 
-# TMscore
-EVAL_FOLDER=MEAN/evaluation
-g++ -static -O3 -ffast-math -lm -o ${EVAL_FOLDER}/TMscore ${EVAL_FOLDER}/TMscore.cpp
+    conda run -n ${ENV_NAME} pip install -e vendor/esm
+    conda run -n ${ENV_NAME} pip install -r requirements.txt
+    conda run -n ${ENV_NAME} pip install -e .
+
+    EVAL_FOLDER=MEAN/evaluation
+    g++ -static -O3 -ffast-math -lm -o ${EVAL_FOLDER}/TMscore ${EVAL_FOLDER}/TMscore.cpp
+
+    # Activate the environment
+    echo "Activating environment ${ENV_NAME}"
+    conda activate ${ENV_NAME}
+
+else
+    echo "INFO:: Installation failed. Environment ${ENV_NAME} not found. Please check the environment.yml file."
+fi

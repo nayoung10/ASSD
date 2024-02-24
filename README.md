@@ -22,7 +22,6 @@ git clone https://github.com/lkny123/AGN.git
 cd AGN
 
 # setup environment
-# TIP: Temporarily comment out the lines 15-22 in install.sh in case the conda installation fails. 
 source scripts/install.sh
 ```
 
