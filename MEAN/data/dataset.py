@@ -107,8 +107,7 @@ class EquiAACDataset(torch.utils.data.Dataset):
         self.ctx_cutoff = ctx_cutoff
         self.interface_cutoff = interface_cutoff
 
-        # load fasta
-        self.fasta_dict = extract_seq_from_fasta(fasta_path)
+        self.fasta_path = fasta_path
 
     def _save_part(self, save_dir, num_entry):
         file_name = os.path.join(save_dir, f'part_{len(self.file_names)}.pkl')
@@ -183,6 +182,7 @@ class EquiAACDataset(torch.utils.data.Dataset):
         idx = self.idx_mapping[idx]
         idx = self._check_load_part(idx)
         item, res = self.data[idx], {}
+        fasta_dict = extract_seq_from_fasta(self.fasta_path)
         # each item is an instance of ABComplex. res has following entries
         # X: [seq_len, 4, 3], coordinates of N, CA, C, O. Missing data are set to the average of two adjacent nodes
         # S: [seq_len], indices of each residue
@@ -204,7 +204,7 @@ class EquiAACDataset(torch.utils.data.Dataset):
             begins.append(VOCAB.BOA)
         
         X, S, S0 = [], [], [] 
-        H0 = self.fasta_dict[item.pdb_id]
+        H0 = fasta_dict[item.pdb_id]
         chain_start_ends = []  # tuples of [start, end)
 
         # format input, box is begin of chain x
