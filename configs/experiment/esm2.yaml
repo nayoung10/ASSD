@@ -12,7 +12,7 @@ defaults:
 # this allows you to overwrite only specified parameters
 
 # name of the run determines folder name in logs
-name: "rabd/esm2_650m"
+name: "rabd/esm2_t33_650M_UR50D"
 
 datamodule:
   alphabet:
