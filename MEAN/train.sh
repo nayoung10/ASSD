@@ -51,6 +51,7 @@ fi
 
 
 model_name=esm2_t33_650M_UR50D
+# model_name=esm2_t6_8M_UR50D
 
 SAVE_DIR=${SAVE_DIR}/${MODEL}_CDR${CDR}_${MODE}
 

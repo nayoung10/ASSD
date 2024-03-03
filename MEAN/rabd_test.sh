@@ -26,7 +26,8 @@ CKPT=${CKPT_DIR}/checkpoint/best.ckpt
 
 echo "Using checkpoint: ${CKPT}"
 
-model_name="esm2_t33_650M_UR50D"
+model_name=esm2_t33_650M_UR50D
+# model_name=esm2_t6_8M_UR50D
 
 python generate.py \
     --ckpt ${CKPT} \
