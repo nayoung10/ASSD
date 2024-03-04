@@ -13,7 +13,7 @@ echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}"
 
 # 1. Generate sequences \hat{s}
 
-model_name="esm2_t33_650M_UR50D"
+model_name="esm2_t6_8M_UR50D"
 
 for split in "${data_splits[@]}"; do
     

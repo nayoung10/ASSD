@@ -9,9 +9,7 @@ ROOT_DIR=$(cd "$(dirname "$0")"; cd ..; pwd)
 echo "Locate project at ${ROOT_DIR}"
 
 # pLM Model Name
-# model_names=("esm2_t6_8M_UR50D" "esm2_t12_35M_UR50D" "esm2_t30_150M_UR50D" "esm2_t33_650M_UR50D")
-model_name="esm2_t33_650M_UR50D"
-
+model_name="esm2_t6_8M_UR50D"
 
 exp=esm2
 name=rabd/${model_name}

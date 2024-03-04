@@ -29,7 +29,7 @@ fi
 CKPT_DIR=${DATA_DIR}/ckpt/${MODEL}_CDR${CDR}_${MODE}/version_${VERSION}
 CKPT=${CKPT_DIR}/checkpoint/best.ckpt
 
-model_name=("esm2_t33_650M_UR50D")
+model_name="esm2_t6_8M_UR50D"
 
 echo "Using checkpoint: ${CKPT}"
 python generate.py \
