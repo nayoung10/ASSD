@@ -9,7 +9,7 @@ export CUDA_VISIBLE_DEVICES=7
 echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}"
 
 # pLM Model Name
-model_name="esm2_t6_8M_UR50D"
+model_name="esm2_t33_650M_UR50D"
 
 # Array of alpha values
 exp_name="rabd/${model_name}"

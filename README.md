@@ -66,13 +66,14 @@ bash scripts/prepare_data_skempi.sh
 ## Benchmark Experiments
 
 ### Task 1: Sequence and Structure Modeling
-We first fine-tune/evaluate the sequence design model [ESM2](https://github.com/BytedProtein/ByProt/tree/main), then use its sequence predictions \hat{s} to train/evaluate the structure prediction model [MEAN](https://github.com/THUNLP-MT/MEAN/). 
+We first fine-tune/evaluate the sequence design model [ESM2](https://www.pnas.org/doi/full/10.1073/pnas.2016239118), then use its sequence predictions \hat{s} to train/evaluate the structure prediction model [MEAN](https://arxiv.org/abs/2208.06073). For more information on running MEAN, please visit the [MEAN github page](https://github.com/THUNLP-MT/MEAN/). 
 
 
 ```bash
 # Step 1: Sequence design
 bash scripts/k_fold_train.sh # training sequence design model 
 bash scripts/k_fold_eval.sh # evaluate AAR
+bash scripts/average_results_kfold.sh # average results across all folds
 
 # Step 2: Structure prediction 
 bash scripts/generate_seqs_kfold.sh # generate sequence -- i.e., the input of the structure prediction model 
