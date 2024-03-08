@@ -98,12 +98,9 @@ GPU=0 MODE=111 DATA_DIR=summaries/cdrh3 bash rabd_test.sh 0
 
 ## Acknowledgements
 We deeply appreciate the following works/repositories, on which our project heavily relies.
-- [Structure-informed Language Models Are Protein Designers](https://github.com/BytedProtein/ByProt/tree/main)
-- [MEAN: Conditional Antibody Design as 3D Equivariant Graph Translation](https://github.com/THUNLP-MT/MEAN/)
-- [Evolutionary Scale Modeling](https://github.com/facebookresearch/esm/tree/main)
-- [Deep Learning-Guided Optimization of Human Antibody Against SARS-CoV-2 Variants with Broad Neutralization](https://github.com/HeliXonProtein/binding-ddg-predictor)
-- [Scoring function for automated assessment of protein structure template quality](https://zhanggroup.org/TM-score/)
-- [E(n) Equivariant Graph Neural Networks](https://github.com/vgsatorras/egnn)
-- [ANARCI: antigen receptor numbering and receptor classification](https://github.com/oxpig/ANARCI)
+- [Structure-informed Language Models Are Protein Designers](https://github.com/BytedProtein/ByProt/tree/main) for training/testing pipelines of the sequence design model.
+- [MEAN: Conditional Antibody Design as 3D Equivariant Graph Translation](https://github.com/THUNLP-MT/MEAN/) for data-preprocessing and the entire structure prediction model. 
+- [Evolutionary Scale Modeling](https://github.com/facebookresearch/esm/tree/main) as the pLM adopted for the sequence design model. 
+- [Scoring function for automated assessment of protein structure template quality](https://zhanggroup.org/TM-score/) for tm-scoring of the generated structures. 
 
 ## Citation
