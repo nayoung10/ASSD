@@ -104,3 +104,9 @@ We deeply appreciate the following works/repositories, on which our project heav
 - [Scoring function for automated assessment of protein structure template quality](https://zhanggroup.org/TM-score/) for tm-scoring of the generated structures. 
 
 ## Citation
+@article{kim2024anfinsen,
+  title={Anfinsen Goes Neural: a Graphical Model for Conditional Antibody Design},
+  author={Kim, Nayoung and Kim, Minsu and Park, Jinkyoo},
+  journal={arXiv preprint arXiv:2402.05982},
+  year={2024}
+}
