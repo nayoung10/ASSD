@@ -1,5 +1,7 @@
 import json
 import os
+from argparse import ArgumentParser
+from multiprocessing import Pool
 import pickle 
 from tqdm import tqdm
 from functools import partial
@@ -12,7 +14,7 @@ from torch.nn import functional as F
 from torch.utils.data.datapipes.map import SequenceWrapper
 from torch.utils.data.dataset import Subset
 
-from .data_utils import Alphabet
+from src.datamodules.datasets.data_utils import Alphabet
 from src.datamodules.datasets.pdb_utils import AAComplex, Protein, VOCAB
 
 import esm
@@ -151,7 +153,7 @@ class EquiAACAntigenDataset(torch.utils.data.Dataset):
 
     def _process_item(self, item):
         hc, lc = item.get_heavy_chain(), item.get_light_chain()
-        antigen_chains = item.get_antigen_chains(interface_only=False, cdr=None)
+        antigen_chains = item.get_antigen_chains(interface_only=True, cdr=None)
 
         # Process the antigen chains only
         coords = {
@@ -524,3 +526,22 @@ class Featurizer(object):
             'cdrs': cdr_tensor  # Add 'cdr' tensor to the batch
         }
         return batch
+
+def parse_args():
+    parser = ArgumentParser()
+    parser.add_argument('--data_dir', type=str, required=True, help='Directory containing the data files.')
+    parser.add_argument('--datasets', nargs='+', default=['train', 'valid', 'test'],
+                        help='Datasets to process (default: train valid test)')
+    return parser.parse_args()
+
+def process_dataset(dataset_name):
+    dataset_path = os.path.join(args.data_dir, f"{dataset_name}.json")
+    dataset = EquiAACAntigenDataset(dataset_path)
+    print(f"{dataset_name} dataset size:", len(dataset))
+
+if __name__ == '__main__':
+    args = parse_args()
+
+     # Utilize all available CPU cores for parallel processing
+    with Pool() as p:
+        p.map(process_dataset, args.datasets)

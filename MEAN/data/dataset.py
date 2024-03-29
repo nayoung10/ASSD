@@ -43,6 +43,8 @@ def extract_seq_from_fasta(file_path):
         name = lines[0].split('=')[1].split('|')[0].strip()
         
         sequence = ''.join(lines[1:])
+        if '.' in sequence:
+            sequence = sequence.split('.')[0]
         fasta_dict[name] = sequence
     
     return fasta_dict

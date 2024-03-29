@@ -30,6 +30,7 @@ class EquiAACAntigenDataModule(LightningDataModule):
         sort: bool = False,
         num_workers: int = 0,
         pin_memory: bool = False,
+        test_split='test'
     ):
         super().__init__()
 
@@ -53,7 +54,7 @@ class EquiAACAntigenDataModule(LightningDataModule):
             self.valid_dataset = EquiAACAntigenDataset(os.path.join(self.hparams.data_dir, "valid.json"))
         
         if stage == 'test' or stage == 'predict' or stage is None:
-            self.test_dataset = EquiAACAntigenDataset(os.path.join(self.hparams.data_dir, "test.json"))
+            self.test_dataset = EquiAACAntigenDataset(os.path.join(self.hparams.data_dir, self.hparams.test_split + ".json"))
 
         self.alphabet = Alphabet(**self.hparams.alphabet)
         self.collate_batch = self.alphabet.featurizer
