@@ -9,7 +9,7 @@ cdr_types=(1 2 3)
 folds=(0 1 2 3 4 5 6 7 8 9)
 data_splits=('train' 'valid')
 
-export CUDA_VISIBLE_DEVICES=4
+export CUDA_VISIBLE_DEVICES=1
 echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}"
 
 model_name="esm2_t33_650M_UR50D"

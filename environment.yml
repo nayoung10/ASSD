@@ -1,8 +1,9 @@
-name: AGN
+name: ASSD
 channels:
+  - pytorch
+  - nvidia
   - conda-forge
   - pyg
-  - pytorch
   - bioconda
 dependencies:
   - python=3.8
@@ -12,11 +13,11 @@ dependencies:
   - cudatoolkit=11.3
   - ca-certificates
   - openssl
-  - pyg
-  - pytorch-scatter
-  - pytorch-sparse
-  - pytorch-cluster
-  - pytorch-spline-conv
+  - pyg::pyg
+  - pyg::pytorch-scatter
+  - pyg::pytorch-sparse
+  - pyg::pytorch-cluster
+  - pyg::pytorch-spline-conv
   - certifi
   - torchdata
   - torchtext
