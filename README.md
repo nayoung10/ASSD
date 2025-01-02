@@ -1,6 +1,6 @@
-# Anfinsen Goes Neural (AGN): a Graphical Model for Conditional Antibody Design
+# Decoupled Sequence and Structure GEneration for Realistic Antibody Design
 
-This is a public repository for our paper [Anfinsen Goes Neural: a Graphical Model for Conditional Antibody Design](https://arxiv.org/abs/2402.05982). 
+This is a public repository for our paper [Decoupled Sequence and Structure GEneration for Realistic Antibody Design](https://openreview.net/forum?id=CTkABQvnkm). 
 
 ## Overview
 
@@ -18,8 +18,8 @@ This is a public repository for our paper [Anfinsen Goes Neural: a Graphical Mod
 
 ```bash
 # clone project
-git clone https://github.com/lkny123/AGN.git
-cd AGN
+git clone https://github.com/nayoung10/ASSD.git
+cd ASSD
 
 # setup environment
 source scripts/install.sh
@@ -29,14 +29,14 @@ source scripts/install.sh
 
 ### Download 
 1. Download ```all_structures.zip``` from the [SAbDab download page](https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabdab/archive/all/). 
-2. Move ```all_structures.zip``` to ```AGN/MEAN```
+2. Move ```all_structures.zip``` to ```ASSD/MEAN```
 3. Unzip with ```unzip all_structures.zip```
 
 ### Pre-processing for MEAN
 We use the data-preprocessing scripts provided by [MEAN](https://github.com/THUNLP-MT/MEAN/).
 
 ```bash
-cd MEAN # in AGN/MEAN directory
+cd MEAN # in ASSD/MEAN directory
 bash scripts/prepare_data_kfold.sh summaries/sabdab_summary.tsv all_structures/imgt
 bash scripts/prepare_data_rabd.sh summaries/rabd_summary.jsonl all_structures/imgt summaries/sabdab_all.json
 bash scripts/prepare_data_skempi.sh summaries/skempi_v2_summary.jsonl all_structures/imgt summaries/sabdab_all.json
@@ -44,7 +44,7 @@ bash scripts/prepare_data_skempi.sh summaries/skempi_v2_summary.jsonl all_struct
 
 ### Pre-processing for ESM2
 ```bash
-# copy data splits to AGN/data
+# copy data splits to ASSD/data
 mkdir -p ../data && \
 rsync -avm --include='*/' \
 --include='train.json' \
@@ -55,7 +55,7 @@ rsync -avm --include='*/' \
 summaries/ ../data/
 
 # data pre-processing for ESM2
-cd ../ # in AGN directory
+cd ../ # in ASSD directory
 bash scripts/prepare_data_kfold.sh
 bash scripts/prepare_data_rabd.sh
 bash scripts/prepare_data_skempi.sh
@@ -77,7 +77,7 @@ bash scripts/average_results_kfold.sh # average results across all folds
 
 # Step 2: Structure prediction 
 bash scripts/generate_seqs_kfold.sh # generate sequence -- i.e., the input of the structure prediction model 
-cd MEAN # in AGN/MEAN directory 
+cd MEAN # in ASSD/MEAN directory 
 GPU=0 bash scripts/k_fold_train.sh summaries 111 mean 9901
 GPU=0 bash scripts/k_fold_eval.sh summaries 111 mean 0
 ```
@@ -91,7 +91,7 @@ bash scripts/task2_eval.sh # evaluate AAR and CoSim
 
 # Step 2: Structure prediction (MEAN)
 bash scripts/generate_seqs_rabd.sh # generate sequence -- i.e., the input of the structure prediction model
-cd MEAN # in AGN/MEAN directory 
+cd MEAN # in ASSD/MEAN directory 
 GPU=0 MODE=111 DATA_DIR=summaries/cdrh3 bash train.sh mean 3
 GPU=0 MODE=111 DATA_DIR=summaries/cdrh3 bash rabd_test.sh 0
 ```
@@ -104,11 +104,3 @@ We deeply appreciate the following works/repositories, on which our project heav
 - [Scoring function for automated assessment of protein structure template quality](https://zhanggroup.org/TM-score/) for tm-scoring of the generated structures. 
 
 ## Citation
-```bash
-@article{kim2024anfinsen,
-  title={Anfinsen Goes Neural: a Graphical Model for Conditional Antibody Design},
-  author={Kim, Nayoung and Kim, Minsu and Park, Jinkyoo},
-  journal={arXiv preprint arXiv:2402.05982},
-  year={2024}
-}
-```
