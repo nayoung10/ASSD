@@ -1,4 +1,4 @@
-# Decoupled Sequence and Structure GEneration for Realistic Antibody Design
+# Decoupled Sequence and Structure Generation for Realistic Antibody Design
 
 This is a public repository for our paper [Decoupled Sequence and Structure Generation for Realistic Antibody Design](https://openreview.net/forum?id=CTkABQvnkm). 
 
